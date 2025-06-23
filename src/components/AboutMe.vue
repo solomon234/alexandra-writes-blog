@@ -15,28 +15,27 @@
       
       <div class="about-me-text">
         <h3>Hi there! I'm Alexandra!</h3>
-        <p>I'm 9 years old and I love writing stories, going on adventures, and learning about science!</p>
+        <p>I'm 9 years old and I love writing stories, playing video games and reading!</p>
         
         <h3>My Favorite Things:</h3>
         <ul class="favorites-list">
-          <li>🦄 Unicorns and magical creatures</li>
-          <li>🌈 Colorful art supplies</li>
-          <li>📚 Reading adventure books</li>
-          <li>🧪 Doing science experiments</li>
-          <li>🍦 Strawberry ice cream with sprinkles</li>
+          <li>🎮 Video Games like Roblox and PKXD</li>
+          <li>🍣 Eating Sushi</li>
+          <li>📚 Reading Horror and Mystery Books</li>
+          <li>🧪 Writing Stories</li>
+          <li>🍦 Cupcake Ice Cream</li>
         </ul>
         
         <h3>Fun Facts About Me:</h3>
         <ul class="fun-facts-list">
-          <li>I have a pet goldfish named Bubbles 🐠</li>
-          <li>I can do a cartwheel and almost do a handstand!</li>
-          <li>I've written 12 stories about dragons</li>
-          <li>My favorite color changes every month (right now it's purple!)</li>
-          <li>I want to be an author and scientist when I grow up</li>
+          <li>I sometimes make romantic stories</li>
+          <li>I really like anime</li>
+          <li>I love the new movie K pop demon hunters!</li>
+          <li>I want to be a singer when I grow up</li>
         </ul>
         
         <h3>My Hobbies:</h3>
-        <p>When I'm not writing stories for my blog, I love drawing, collecting rocks and leaves, building forts with my friends, and playing with my little brother (sometimes!).</p>
+        <p>When I'm not writing stories for my blog, I'm talking, drawing, playing piano and painting.</p>
         
         <div class="special-message">
           <p>Thanks for visiting my blog! I hope you like my stories and adventures!</p>
