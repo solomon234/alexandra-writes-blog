@@ -29,13 +29,15 @@ function parsePostContent(content, filePath) {
   const postContent = lines.slice(contentStartIndex).join('\n')
 
   // Extract category, date info from file path
-  // Format: ./posts/category/year/month/day/filename.txt
+  // Format: ./posts/category/year/month/day/filename.txt or filename.md
   const pathParts = filePath.split('/')
   const category = pathParts[2]
   const year = pathParts[3]
   const month = pathParts[4]
   const day = pathParts[5]
-  const filename = pathParts[6].replace('.txt', '')
+  const filenameFull = pathParts[6]
+  const isMarkdown = filenameFull.endsWith('.md')
+  const filename = filenameFull.replace('.txt', '').replace('.md','')
 
   return {
     id: `${category}-${year}-${month}-${day}-${filename}`,
@@ -43,6 +45,7 @@ function parsePostContent(content, filePath) {
     date: metadata.date,
     image: metadata.image,
     content: postContent,
+    isMarkdown: isMarkdown,
     category: category,
     year: year,
     month: month,
@@ -52,7 +55,7 @@ function parsePostContent(content, filePath) {
 }
 
 // Dynamically import all blog post files
-const postFiles = import.meta.glob('./posts/**/*.txt', { as: 'raw', eager: true })
+const postFiles = import.meta.glob('./posts/**/*.{txt,md}', { as: 'raw', eager: true })
 
 // Page navigation
 const currentPage = ref('home')
@@ -146,6 +149,7 @@ function filterPosts(category) {
           :content="post.content"
           :image="post.image"
           :category="post.category"
+          :is-markdown="post.isMarkdown"
         />
       </div>
 
