@@ -2,8 +2,6 @@ title: My New Story: A Portal to Another World
 date: June 23, 2025
 image: /assets/images/a-portal-to-another-world.png
 
-# My New Story: A Portal to Another World
-
 ## Chapter 1: New School
 
 One day… Okay okay I am not going to start with the basic routine all right- Let's start it over again. Hi, my name is **Casey Jones** and I am in 7th grade!
