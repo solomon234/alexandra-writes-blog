@@ -1,7 +1,6 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { marked } from 'marked'
-import TableOfContents from './TableOfContents.vue'
 
 const props = defineProps({
   title: {
@@ -30,19 +29,6 @@ const props = defineProps({
   }
 })
 
-// Configure marked to add IDs to headings
-onMounted(() => {
-  const renderer = new marked.Renderer()
-
-  // Override the heading renderer to add IDs
-  renderer.heading = function(text, level) {
-    const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
-    return `<h${level} id="${id}">${text}</h${level}>`
-  }
-
-  marked.setOptions({ renderer })
-})
-
 // Parse markdown content to HTML
 const parsedContent = computed(() => {
   if (props.isMarkdown) {
@@ -61,10 +47,7 @@ const parsedContent = computed(() => {
     </p>
     <div class="blog-post-content">
       <img v-if="image" :src="image" :alt="title" width="300" height="200" />
-      <div v-if="isMarkdown">
-        <TableOfContents :content="content" />
-        <div class="content-text markdown-content" v-html="parsedContent"></div>
-      </div>
+      <div v-if="isMarkdown" class="content-text markdown-content" v-html="parsedContent"></div>
       <div v-else class="content-text">
         {{ content }}
       </div>
