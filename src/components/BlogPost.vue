@@ -19,6 +19,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  audio:{
+    type: String,
+    default: ''
+  },
   category: {
     type: String,
     default: ''

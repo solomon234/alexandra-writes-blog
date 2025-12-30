@@ -51,6 +51,13 @@ const renderedContent = computed(() => {
           <img :src="post.image" :alt="post.title" class="post-image" />
         </div>
 
+        <div v-if="post.audio" class="post-media-container">
+          <audio controls>
+            <source :src="post.audio" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
         <div class="post-content" v-html="renderedContent"></div>
       </article>
     </div>
@@ -127,6 +134,18 @@ const renderedContent = computed(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.post-media-container {
+  padding: 1rem 2rem;
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+
+.post-media-container audio {
+  width: 100%;
 }
 
 .post-content {

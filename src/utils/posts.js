@@ -39,6 +39,7 @@ export function parsePostContent(content, filePath) {
     title: metadata.title,
     date: metadata.date,
     image: metadata.image,
+    audio: metadata.audio,
     content: postContent,
     isMarkdown: isMarkdown,
     category: category,
