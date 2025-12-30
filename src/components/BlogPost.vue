@@ -26,21 +26,38 @@ const props = defineProps({
   isMarkdown: {
     type: Boolean,
     default: false
-  }
+  },
+  slug: String,
+  year: String,
+  month: String,
+  day: String
+})
+
+// Truncate content for preview
+const previewContent = computed(() => {
+  const maxLength = 200
+  if (props.content.length <= maxLength) return props.content
+  return props.content.substring(0, maxLength) + '...'
 })
 
 // Parse markdown content to HTML
 const parsedContent = computed(() => {
   if (props.isMarkdown) {
-    return marked(props.content)
+    return marked(previewContent.value)
   }
-  return props.content
+  return previewContent.value
+})
+
+const postLink = computed(() => {
+  return `/post/${props.category}/${props.year}/${props.month}/${props.day}/${props.slug}`
 })
 </script>
 
 <template>
   <article class="blog-post">
-    <h2 class="blog-post-title">{{ title }}</h2>
+    <router-link :to="postLink" class="post-title-link">
+      <h2 class="blog-post-title">{{ title }}</h2>
+    </router-link>
     <p class="blog-post-meta">
       Posted on {{ date }}
       <span v-if="category" class="blog-post-category">in {{ category }}</span>
@@ -49,19 +66,39 @@ const parsedContent = computed(() => {
       <img v-if="image" :src="image" :alt="title" width="300" height="200" />
       <div v-if="isMarkdown" class="content-text markdown-content" v-html="parsedContent"></div>
       <div v-else class="content-text">
-        {{ content }}
+        {{ previewContent }}
       </div>
     </div>
+    <router-link :to="postLink" class="read-more">Read More →</router-link>
   </article>
 </template>
 
 <style scoped>
+.post-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .blog-post-title {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .blog-post-title:hover {
-  transform: scale(1.02);
+  transform: translateX(5px);
+  color: #5d9cec;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #5d9cec;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.read-more:hover {
+  text-decoration: underline;
 }
 
 .blog-post-content p {
